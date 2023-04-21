@@ -1,0 +1,59 @@
+@import "@picocss/pico/scss/_variables";
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  @media (max-width: map-get($breakpoints, "md")) {
+    display: block;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: map-get($breakpoints, "md")) {
+    display: none;
+  }
+}
+
+.navbar {
+  background-color: rgba($color: #f6f6ef, $alpha: 0.66);
+  padding: 1em;
+  margin: 0;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100vw;
+  height: 100px;
+}
+
+.logo {
+  position: absolute;
+  top: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+.drawer {
+  position: fixed;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #f6f6ef, $alpha: 0.66);
+  backdrop-filter: blur(10px);
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+}
+
+.open {
+  display: flex;
+}

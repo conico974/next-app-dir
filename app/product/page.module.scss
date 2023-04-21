@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+
+// A simple grid layout for the product list page with 5 rows on large page and 3 rows on medium page and 1 row on small
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  @media screen and (max-width: map-get($breakpoints, "lg")) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: map-get($breakpoints, "sm")) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

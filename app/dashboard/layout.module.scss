@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin-top: 3rem;
+  min-height: 80vh;
+
+  aside {
+    flex: 2;
+    height: 100%;
+  }
+
+  main {
+    flex: 10;
+  }
+}
