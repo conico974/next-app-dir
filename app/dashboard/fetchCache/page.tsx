@@ -1,5 +1,6 @@
+import { revalidatePath, revalidateTag } from "next/cache";
 import { headers } from "next/headers";
-import React from "react";
+import React, { useTransition } from "react";
 const getRealtimeData = async () => {
   const h = headers();
   return { date: new Date().toISOString() };
@@ -8,7 +9,7 @@ const getRealtimeData = async () => {
 async function getData() {
   try {
     const response = await fetch("https://d14is2gm5ojivw.cloudfront.net/api/test", {
-      next: { revalidate: 30 },
+      next: { revalidate: 30, tags: ["1"] },
     });
     const data = await response.json();
     console.log("Revalidate 30s", data);
@@ -22,7 +23,7 @@ async function getData() {
 async function getData2() {
   try {
     const response = await fetch("https://d14is2gm5ojivw.cloudfront.net/api/test?q=1", {
-      next: { revalidate: 120 },
+      next: { revalidate: 120, tags: ["2", "1"] },
     });
     const data = await response.json();
     console.log("Revalidate 120s", data);
@@ -37,9 +38,13 @@ const FetchCachePage = async () => {
   const { date } = await getData();
   const { date: date2 } = await getData2();
   const { date: realtimeDate } = await getRealtimeData();
+
   return (
     <article>
       <h3>Fetch Cache</h3>
+      <form>
+        <input type="submit" />
+      </form>
       <p>Fetch data from the server and cache it.</p>
       <p>{`Real time : ${realtimeDate}`}</p>
       <p>{`Revalidate 30 seconds: ${date}`}</p>

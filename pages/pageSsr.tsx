@@ -2,7 +2,7 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import { InferGetServerSidePropsType } from "next";
 import React from "react";
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = () => {
   return {
     props: {
       date: new Date().toISOString(),

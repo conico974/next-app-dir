@@ -11,8 +11,8 @@ export default {
   stacks(app) {
     app.stack(function Site({ stack }) {
       const site = new NextjsSite(stack, "site", {
-        // buildCommand:
-        // "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
+        buildCommand:
+          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
         // enableExperimentalCacheInterception: true,
         waitForInvalidation: false,
       });
