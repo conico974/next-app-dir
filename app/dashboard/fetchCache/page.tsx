@@ -1,4 +1,3 @@
-import { revalidatePath, revalidateTag } from "next/cache";
 import { headers } from "next/headers";
 import React, { useTransition } from "react";
 const getRealtimeData = async () => {
