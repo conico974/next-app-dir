@@ -7,6 +7,7 @@ export const dynamicParams = true;
 export const revalidate = 60 * 5; // 5 minutes
 
 export async function generateStaticParams() {
+  return Array.from({ length: 150 }, (_, i) => ({ id: `${i + 1}` }));
   return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 

@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import React, { useTransition } from "react";
+import React from "react";
 const getRealtimeData = async () => {
   const h = headers();
   return { date: new Date().toISOString() };
@@ -7,9 +7,12 @@ const getRealtimeData = async () => {
 
 async function getData() {
   try {
-    const response = await fetch("https://d14is2gm5ojivw.cloudfront.net/api/test", {
-      next: { revalidate: 30, tags: ["1"] },
-    });
+    const response = await fetch(
+      "https://d2jjvnhym149vv.cloudfront.net/api/test",
+      {
+        next: { revalidate: 30 },
+      }
+    );
     const data = await response.json();
     console.log("Revalidate 30s", data);
     return data as { date: string };
@@ -21,9 +24,12 @@ async function getData() {
 
 async function getData2() {
   try {
-    const response = await fetch("https://d14is2gm5ojivw.cloudfront.net/api/test?q=1", {
-      next: { revalidate: 120, tags: ["2", "1"] },
-    });
+    const response = await fetch(
+      "https://d2jjvnhym149vv.cloudfront.net/api/test?q=1",
+      {
+        next: { revalidate: 120 },
+      }
+    );
     const data = await response.json();
     console.log("Revalidate 120s", data);
     return data as { date: string };

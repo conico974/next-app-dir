@@ -5,7 +5,7 @@ export default {
   config(_input) {
     return {
       name: "next-app-dir",
-      region: "us-east-1",
+      region: "eu-west-1",
     };
   },
   stacks(app) {
@@ -13,7 +13,8 @@ export default {
       const site = new NextjsSite(stack, "site", {
         buildCommand:
           "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
-        // enableExperimentalCacheInterception: true,
+        enableExperimentalCacheInterception: true,
+        warm:10,
         waitForInvalidation: false,
       });
       // site.attachPermissions([cacheBucket]);
