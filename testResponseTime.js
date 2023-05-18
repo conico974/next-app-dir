@@ -1,6 +1,7 @@
 var https = require("https");
 // Define the URL and the number of requests
-var url = "https://d2jjvnhym149vv.cloudfront.net/";
+// var url = "https://d2jjvnhym149vv.cloudfront.net/"
+var url = "https://next-app-4lnwyz5w5-conico974.vercel.app/";
 var requests = 100;
 
 // Create an array to store the response times
