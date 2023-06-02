@@ -1,5 +1,6 @@
 import React from "react";
 import { headers } from "next/headers";
+import MotionLayout from "./component";
 
 async function getTime() {
   const res = await new Promise<string>((resolve) => {
@@ -15,7 +16,7 @@ const SSRPage = async () => {
   const referer = headersList.get("referer");
   const time = await getTime();
   return (
-    <>
+    <MotionLayout>
       <hgroup>
         <h1>SSR Page</h1>
         <h3>{`Last generated at : ${time}`}</h3>
@@ -24,7 +25,7 @@ const SSRPage = async () => {
         <h2>Referer</h2>
         <p>{referer}</p>
       </article>
-    </>
+    </MotionLayout>
   );
 };
 

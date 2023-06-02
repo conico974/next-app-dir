@@ -11,10 +11,10 @@ export default {
   stacks(app) {
     app.stack(function Site({ stack }) {
       const site = new NextjsSite(stack, "site", {
-        buildCommand:
+        buildCommand: 
           "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
         // enableExperimentalCacheInterception: true,
-        warm:10,
+        // warm:10,
         waitForInvalidation: false,
       });
       // site.attachPermissions([cacheBucket]);

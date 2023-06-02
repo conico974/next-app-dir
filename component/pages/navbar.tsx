@@ -28,6 +28,15 @@ export const Navbar = () => {
         <Link mx={5} href="/pageSsg">
           Page SSG
         </Link>
+        <Link mx={5} href="/dynamic/12">
+          Dynamic SSG
+        </Link>
+        <Link mx={5} href="/catchAll/12">
+          Dynamic catchAll
+        </Link>
+        <Link mx={5} href="/catchAll/12/sqdq/qsd">
+          Dynamic catchAll 3lvl
+        </Link>
       </Flex>
     </Flex>
   );
