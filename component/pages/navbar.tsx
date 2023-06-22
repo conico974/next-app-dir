@@ -28,8 +28,11 @@ export const Navbar = () => {
         <Link mx={5} href="/pageSsg">
           Page SSG
         </Link>
-        <Link mx={5} href="/dynamic/12">
+        <Link mx={5} href="/dynamicSSG/1">
           Dynamic SSG
+        </Link>
+        <Link mx={5} href="/dynamic/12">
+          Dynamic SSR
         </Link>
         <Link mx={5} href="/catchAll/12">
           Dynamic catchAll

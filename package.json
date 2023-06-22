@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "sst bind next dev",
-    "deploy": "sst deploy --stage prod",
+    "deploy": "LOCAL_GENERATE=true sst deploy --stage prod",
     "build": "next build",
     "start": "sst bind next start",
     "startStandalone": "sst bind node .next/standalone/server.js",
@@ -28,7 +28,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.60.0",
-    "sst": "^2.10.4",
+    "sst": "2.16.3",
     "swiper": "^9.3.2",
     "typescript": "5.0.3"
   },

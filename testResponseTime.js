@@ -1,7 +1,7 @@
 var https = require("https");
 // Define the URL and the number of requests
-var url = "d2jjvnhym149vv.cloudfront.net";
-// var url = "next-app-4lnwyz5w5-conico974.vercel.app";
+// var url = "d2jjvnhym149vv.cloudfront.net";
+var url = "next-app-dir-seven.vercel.app";
 var requests = 100;
 
 // Create an array to store the response times
@@ -14,7 +14,7 @@ function makeRequest() {
   // Send an HTTP HEAD request to get only the headers
 
   var req = https.request(
-    { hostname: url, path: `/product/${times.length + 1}`, method: "GET" },
+    { hostname: url, path: `/isr`, method: "GET" },
     function (res) {
       // Get the current time after receiving the response
       var endTime = Date.now();
@@ -28,7 +28,7 @@ function makeRequest() {
       // Check if there are more requests to make
       if (times.length < requests) {
         // Wait for 500 milliseconds before making another request
-        setTimeout(makeRequest, 50);
+        setTimeout(makeRequest, 500);
       } else {
         // Compute the average response time
         var sum = times.reduce(function (a, b) {

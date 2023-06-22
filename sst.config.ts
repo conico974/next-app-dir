@@ -1,5 +1,5 @@
 import { SSTConfig } from "sst";
-import { NextjsSite } from "sst/constructs";
+import { Bucket, NextjsSite } from "sst/constructs";
 
 export default {
   config(_input) {
@@ -13,10 +13,13 @@ export default {
       const site = new NextjsSite(stack, "site", {
         buildCommand: 
           "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
+          // "pnpx open-next@0.0.0-20230610065451 build",
         // enableExperimentalCacheInterception: true,
         // warm:10,
         waitForInvalidation: false,
       });
+      // const testBucket = new Bucket(stack, "testBucket");
+      // testBucket.cdk.bucket
       // site.attachPermissions([cacheBucket]);
 
       stack.addOutputs({
