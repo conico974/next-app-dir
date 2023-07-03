@@ -1,5 +1,5 @@
 import { SSTConfig } from "sst";
-import { Bucket, NextjsSite } from "sst/constructs";
+import { Bucket, NextjsSite, Table } from "sst/constructs";
 
 export default {
   config(_input) {
@@ -9,7 +9,19 @@ export default {
     };
   },
   stacks(app) {
+    
     app.stack(function Site({ stack }) {
+      const testTable = new Table(stack, "testCacheTable2", {
+        fields: {
+          path: "string",
+          tag: "string",
+          revalidatedAt: "number",
+        },
+        primaryIndex: { partitionKey: "tag", sortKey: "path" },
+        globalIndexes: {
+          revalidate: { partitionKey: "path", sortKey: "revalidatedAt" },
+        }
+      });
       const site = new NextjsSite(stack, "site", {
         buildCommand: 
           "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
@@ -17,11 +29,11 @@ export default {
         // enableExperimentalCacheInterception: true,
         // warm:10,
         waitForInvalidation: false,
+        environment: {
+          CACHE_DYNAMO_TABLE: testTable.tableName,
+        }
       });
-      // const testBucket = new Bucket(stack, "testBucket");
-      // testBucket.cdk.bucket
-      // site.attachPermissions([cacheBucket]);
-
+      site.attachPermissions([testTable]);
       stack.addOutputs({
         SiteUrl: site.url || "http://localhost:3000",
       });

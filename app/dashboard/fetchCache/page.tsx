@@ -10,7 +10,7 @@ async function getData() {
     const response = await fetch(
       "https://d2jjvnhym149vv.cloudfront.net/api/test",
       {
-        next: { revalidate: 30 },
+        next: { tags: ["test"] },
       }
     );
     const data = await response.json();
