@@ -1,31 +1,29 @@
-import React from "react";
-import { faker } from "@faker-js/faker";
-import Image from "next/image";
+import React from 'react';
+import { faker } from '@faker-js/faker';
+import Image from 'next/image';
 
 export const revalidate = 300; // 5 minutes
 
 export async function generateStaticParams() {
   return Array.from({ length: 150 }, (_, i) => ({ id: `${i + 1}` }));
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 
 async function getProductData(id: number) {
   faker.seed(id);
   const response = await fetch(
-    "https://d2jjvnhym149vv.cloudfront.net/api/test",
+    'https://d2jjvnhym149vv.cloudfront.net/api/test',
     {
-      next: { tags: ["test"] },
+      next: { tags: ['test'] },
     }
   );
-  const data = (await response.json()) as { date: string };
-  console.log("Revalidate 30s", data);
+  // const data = (await response.json()) as { date: string };
   return Promise.resolve({
     id,
     name: faker.commerce.productName(),
     price: faker.commerce.price(),
     description: faker.commerce.productDescription(),
-    image: faker.image.imageUrl(640, 480, "fashion", true),
-    lastUpdate: new Date(data.date),
+    image: faker.image.imageUrl(640, 480, 'fashion', true),
+    lastUpdate: new Date(),
   });
 }
 

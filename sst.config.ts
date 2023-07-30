@@ -24,8 +24,8 @@ export default {
       });
       const site = new NextjsSite(stack, "site", {
         buildCommand: 
-          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
-          // "pnpx open-next@0.0.0-20230610065451 build",
+          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build && rm -rf .open-next/server-function/node_modules/next/dist/compiled && cp -r node_modules/next/dist/compiled .open-next/server-function/node_modules/next/dist/compiled  && cp -r .next/static .open-next/server-function/.next/static",
+          // "pnpx open-next@2.0.5 build",
         // enableExperimentalCacheInterception: true,
         // warm:10,
         waitForInvalidation: false,

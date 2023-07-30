@@ -6,8 +6,35 @@ const nextConfig = {
     esmExternals: true,
   },
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "loremflickr.com" }],
+    remotePatterns: [{ protocol: 'https', hostname: 'loremflickr.com' }],
   },
+  rewrites: () => ({
+    beforeFiles: [
+      {
+        source: '/shouldBeRewritten',
+        destination: '/',
+      },
+    ],
+  }),
+  redirects: () => [
+    {
+      source: '/shouldBeRedirected',
+      destination: '/',
+      permanent: true,
+    },
+    {
+      source: '/shouldBeRedirectedWithQuery',
+      destination: '/',
+      permanent: false,
+      has: [
+        {
+          type: 'query',
+          key: 'a',
+          value: 'a',
+        },
+      ],
+    },
+  ],
 };
 
 module.exports = nextConfig;
