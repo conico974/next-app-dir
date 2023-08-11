@@ -1,6 +1,6 @@
-import Link from "next/link";
-import React from "react";
-import styles from "./layout.module.scss";
+import Link from 'next/link';
+import React from 'react';
+import styles from './layout.module.scss';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -24,6 +24,9 @@ const DashboardLayout = ({ children, authModal }: DashboardLayoutProps) => {
             </li>
             <li>
               <Link href="/dashboard/login">Login</Link>
+            </li>
+            <li>
+              <Link href="/dashboard/ssr">SSR</Link>
             </li>
           </ul>
         </aside>

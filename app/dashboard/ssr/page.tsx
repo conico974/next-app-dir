@@ -1,12 +1,10 @@
 import React, { Suspense } from 'react';
 import { headers } from 'next/headers';
-import MotionLayout from './component';
-
 async function getTime() {
   const res = await new Promise<string>((resolve) => {
     setTimeout(() => {
       resolve(new Date().toISOString());
-    }, 1500);
+    }, 4500);
   });
   return res;
 }
@@ -16,7 +14,7 @@ const SSRPage = async () => {
   const referer = headersList.get('referer');
   const time = await getTime();
   return (
-    <MotionLayout>
+    <div>
       <hgroup>
         <h1>SSR Page</h1>
         <h3>{`Last generated at : ${time}`}</h3>
@@ -25,7 +23,7 @@ const SSRPage = async () => {
         <h2>Referer</h2>
         <p>{referer}</p>
       </article>
-    </MotionLayout>
+    </div>
   );
 };
 

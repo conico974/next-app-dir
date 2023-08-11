@@ -24,15 +24,16 @@ export default {
       });
       const site = new NextjsSite(stack, "site", {
         buildCommand: 
-          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build && rm -rf .open-next/server-function/node_modules/next/dist/compiled && cp -r node_modules/next/dist/compiled .open-next/server-function/node_modules/next/dist/compiled  && cp -r .next/static .open-next/server-function/.next/static",
+          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
           // "pnpx open-next@2.0.5 build",
         // enableExperimentalCacheInterception: true,
         // warm:10,
         waitForInvalidation: false,
         environment: {
           CACHE_DYNAMO_TABLE: testTable.tableName,
-        }
+        },
       });
+
       site.attachPermissions([testTable]);
       stack.addOutputs({
         SiteUrl: site.url || "http://localhost:3000",

@@ -5,7 +5,7 @@ import Image from 'next/image';
 export const revalidate = 300; // 5 minutes
 
 export async function generateStaticParams() {
-  return Array.from({ length: 150 }, (_, i) => ({ id: `${i + 1}` }));
+  return Array.from({ length: 10 }, (_, i) => ({ id: `${i + 1}` }));
 }
 
 async function getProductData(id: number) {

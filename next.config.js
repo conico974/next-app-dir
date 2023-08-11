@@ -14,6 +14,10 @@ const nextConfig = {
         source: '/shouldBeRewritten',
         destination: '/',
       },
+      {
+        source: '/shouldBeRewritten/:path',
+        destination: '/:path',
+      },
     ],
   }),
   redirects: () => [
