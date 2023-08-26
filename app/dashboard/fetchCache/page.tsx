@@ -10,7 +10,7 @@ async function getData() {
     const response = await fetch(
       "https://d2jjvnhym149vv.cloudfront.net/api/test",
       {
-        next: { tags: ["test"] },
+        next: { tags: ["test"], revalidate: 30 },
       }
     );
     const data = await response.json();
@@ -22,26 +22,26 @@ async function getData() {
   }
 }
 
-// async function getData2() {
-//   try {
-//     const response = await fetch(
-//       "https://d2jjvnhym149vv.cloudfront.net/api/test?q=1",
-//       {
-//         next: { revalidate: 120 },
-//       }
-//     );
-//     const data = await response.json();
-//     console.log("Revalidate 120s", data);
-//     return data as { date: string };
-//   } catch (error) {
-//     console.error(error);
-//     return { date: new Date().toISOString() };
-//   }
-// }
+async function getData2() {
+  try {
+    const response = await fetch(
+      "https://d2jjvnhym149vv.cloudfront.net/api/test?q=1",
+      {
+        next: { revalidate: 120 },
+      }
+    );
+    const data = await response.json();
+    console.log("Revalidate 120s", data);
+    return data as { date: string };
+  } catch (error) {
+    console.error(error);
+    return { date: new Date().toISOString() };
+  }
+}
 
 const FetchCachePage = async () => {
   const { date } = await getData();
-  // const { date: date2 } = await getData2();
+  const { date: date2 } = await getData2();
   // const { date: realtimeDate } = await getRealtimeData();
 
   return (
@@ -52,7 +52,7 @@ const FetchCachePage = async () => {
       </form>
       <p>Fetch data from the server and cache it.</p>
       <p>{`Revalidate 30 seconds: ${date}`}</p>
-      {/* <p>{`Revalidate 120 seconds: ${date2}`}</p> */}
+      <p>{`Revalidate 120 seconds: ${date2}`}</p>
     </article>
   );
 };

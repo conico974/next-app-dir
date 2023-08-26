@@ -6,37 +6,67 @@ const nextConfig = {
     esmExternals: true,
   },
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: 'loremflickr.com' }],
+    remotePatterns: [{ protocol: "https", hostname: "loremflickr.com" }],
   },
   rewrites: () => ({
     beforeFiles: [
       {
-        source: '/shouldBeRewritten',
-        destination: '/',
+        source: "/shouldBeRewritten",
+        destination: "/",
       },
       {
-        source: '/shouldBeRewritten/:path',
-        destination: '/:path',
+        source: "/shouldBeRewritten/:path",
+        destination: "/:path",
+      },
+      {
+        source: "/externalRewrite",
+        destination: "https://google.com",
+      },
+      {
+        source: "/externalRewriteLocal",
+        destination: "https://www.github.com",
+      },
+    ],
+    afterFiles: [
+      {
+        source: "/shouldBeRewrittenAfterFiles",
+        destination: "/",
+      },
+    ],
+    fallback: [
+      {
+        source: "/shouldBeRewrittenFallback",
+        destination: "/",
       },
     ],
   }),
   redirects: () => [
     {
-      source: '/shouldBeRedirected',
-      destination: '/',
+      source: "/shouldBeRedirected",
+      destination: "/",
       permanent: true,
     },
     {
-      source: '/shouldBeRedirectedWithQuery',
-      destination: '/',
+      source: "/shouldBeRedirectedWithQuery",
+      destination: "/",
       permanent: false,
       has: [
         {
-          type: 'query',
-          key: 'a',
-          value: 'a',
+          type: "query",
+          key: "a",
+          value: "a",
         },
       ],
+    },
+    {
+      source: "/externalRedirect",
+      destination: "https://google.com",
+      permanent: false,
+    },
+    {
+      source: "/externalRedirectWithPath/:path",
+      destination: "https://google.com/:path",
+      permanent: false,
     },
   ],
 };

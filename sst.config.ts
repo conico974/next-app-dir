@@ -31,6 +31,7 @@ export default {
         waitForInvalidation: false,
         environment: {
           CACHE_DYNAMO_TABLE: testTable.tableName,
+          USE_STREAMING_RESPONSE: "true"
         },
       });
 
