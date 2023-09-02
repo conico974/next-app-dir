@@ -24,14 +24,14 @@ export default {
       });
       const site = new NextjsSite(stack, "site", {
         buildCommand: 
-          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
+          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build --streaming",
           // "pnpx open-next@2.0.5 build",
         // enableExperimentalCacheInterception: true,
-        // warm:10,
         waitForInvalidation: false,
         environment: {
           CACHE_DYNAMO_TABLE: testTable.tableName,
-          USE_STREAMING_RESPONSE: "true"
+          USE_STREAMING_RESPONSE: "true",
+          AWS_LAMBDA_RUNTIME_VERBOSE:"3"
         },
       });
 

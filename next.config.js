@@ -8,6 +8,25 @@ const nextConfig = {
   images: {
     remotePatterns: [{ protocol: "https", hostname: "loremflickr.com" }],
   },
+  headers: () => [
+    {
+      source: "/product",
+      headers: [
+        {
+          key: "x-custom-header",
+          value: "my custom header value",
+        },
+      ],
+    }, {
+      source: "/product/:path",
+      headers: [
+        {
+          key: "x-custom-:path",
+          value: "this is the :path",
+        },
+      ],
+    }
+  ],
   rewrites: () => ({
     beforeFiles: [
       {

@@ -7,7 +7,9 @@ export async function GET(request: Request) {
   try {
     console.log("revalidating");
     console.log(Object.keys(request));
-    revalidateTag("test");
+    console.log(request.headers);
+    console.log(request.url);
+    // revalidateTag("test");
     // process.env.__NEXT_PRIVATE_PREBUNDLED_REACT = "next";
     console.log("revalidated");
     return NextResponse.json({ revalidated: true });

@@ -28,6 +28,9 @@ export function middleware(request: NextRequest) {
     request: {
       headers: headers,
     },
+    headers: {
+      'x-hello-middleware-res': 'world',
+    }
   });
 
   response.cookies.set('hello', 'world');

@@ -7,7 +7,7 @@ export default function Home() {
       <hgroup>
         <h1>Index Page</h1>
         <h2>Index</h2>
-        <pre>{JSON.stringify(headersList)}</pre>
+        <p>{JSON.stringify(headersList)}</p>
       </hgroup>
     </>
   );
