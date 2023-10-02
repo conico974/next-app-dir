@@ -14,10 +14,9 @@ export async function GET(request: NextRequest) {
   const manifest = JSON.parse(prerenderManifest);
   const previewId = manifest.preview.previewModeId;
 
-  const result = await fetch(`${request.nextUrl.origin}/isr`, {
+  const result = await fetch(`https://${request.headers.get("host")}/isr`, {
     headers: { "x-prerender-revalidate": previewId },
     method: "HEAD",
-    cache: "no-store",
   });
 
   return NextResponse.json({
@@ -25,6 +24,8 @@ export async function GET(request: NextRequest) {
     body: {
       result: result.ok,
       cacheControl: result.headers.get("cache-control"),
+      nextUrl: request.nextUrl,
+      url: request.url,
     },
   });
 }

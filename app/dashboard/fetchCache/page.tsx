@@ -10,7 +10,7 @@ async function getData() {
     const response = await fetch(
       "https://d2jjvnhym149vv.cloudfront.net/api/test",
       {
-        next: { tags: ["test"], revalidate: 30 },
+        next: { revalidate: 30, tags: ['test'] },
       }
     );
     const data = await response.json();
@@ -27,7 +27,7 @@ async function getData2() {
     const response = await fetch(
       "https://d2jjvnhym149vv.cloudfront.net/api/test?q=1",
       {
-        next: { revalidate: 120 },
+        next: { revalidate: 3600 },
       }
     );
     const data = await response.json();

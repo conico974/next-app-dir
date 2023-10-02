@@ -2,7 +2,6 @@
 const nextConfig = {
   experimental: {
     // appDocumentPreloading: false,
-    appDir: true,
     esmExternals: true,
   },
   images: {

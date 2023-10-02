@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  console.log('middleware', request);
-  console.log('next url', request.nextUrl);
+  // console.log('middleware', request);
+  // console.log('next url', request.nextUrl);
   if (request.nextUrl.pathname.startsWith('/middlewareRewrite')) {
     // console.log('middlewareRewrite');
     return NextResponse.rewrite(new URL('/', request.url));
@@ -22,6 +22,15 @@ export function middleware(request: NextRequest) {
     });
   }
 
+  if (request.nextUrl.pathname.startsWith('/isr')) {
+    return NextResponse.next({
+      headers: {
+        'Cache-Control': 's-maxage=99, stale-while-revalidate=999',
+      
+      }
+    })
+  }
+
   const headers = new Headers(request.headers);
   headers.set('x-hello-middleware', 'hello');
   const response = NextResponse.next({
@@ -35,7 +44,7 @@ export function middleware(request: NextRequest) {
 
   response.cookies.set('hello', 'world');
 
-  console.log('middleware response', response);
+  // console.log('middleware response', response);
 
   return response;
 }

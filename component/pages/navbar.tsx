@@ -40,6 +40,12 @@ export const Navbar = () => {
         <Link mx={5} href="/catchAll/12/sqdq/qsd">
           Dynamic catchAll 3lvl
         </Link>
+        <Link mx={5} href="/dynamicWithoutFallback/2">
+          Dynamic fallback false
+        </Link>
+        <Link mx={5} href="/dynamicWithoutFallback/28">
+          Dynamic fallback false 404
+        </Link>
       </Flex>
     </Flex>
   );
