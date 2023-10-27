@@ -8,7 +8,7 @@ import React from "react";
 async function getData() {
   try {
     const response = await fetch(
-      "https://d2jjvnhym149vv.cloudfront.net/api/test",
+      "https://d2uze3ojgmz8re.cloudfront.net/api/test",
       {
         next: { revalidate: 30, tags: ['test'] },
       }
@@ -25,7 +25,7 @@ async function getData() {
 async function getData2() {
   try {
     const response = await fetch(
-      "https://d2jjvnhym149vv.cloudfront.net/api/test?q=1",
+      "https://d2uze3ojgmz8re.cloudfront.net/api/test?q=1",
       {
         next: { revalidate: 3600 },
       }

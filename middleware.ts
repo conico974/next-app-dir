@@ -4,6 +4,15 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   // console.log('middleware', request);
   // console.log('next url', request.nextUrl);
+
+  if(request.nextUrl.pathname.startsWith('/middlewareRewritesExternal2')) {
+    return NextResponse.rewrite(new URL('https://d3ftyhzhpsmdwh.cloudfront.net/'));
+  }
+
+  if(request.nextUrl.pathname.startsWith('/middlewareRewritesExternal')) {
+    return NextResponse.rewrite(new URL('https://rpwktd3vxykgihuemkfxfqhxue0wrrah.lambda-url.eu-west-1.on.aws/'));
+  }
+  
   if (request.nextUrl.pathname.startsWith('/middlewareRewrite')) {
     // console.log('middlewareRewrite');
     return NextResponse.rewrite(new URL('/', request.url));
@@ -39,7 +48,7 @@ export function middleware(request: NextRequest) {
     },
     headers: {
       'x-hello-middleware-res': 'world',
-    }
+    },
   });
 
   response.cookies.set('hello', 'world');

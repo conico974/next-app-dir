@@ -1,5 +1,5 @@
 import { SSTConfig } from "sst";
-import {  NextjsSite } from "sst/constructs";
+import {  NextjsSite, toCdkDuration } from "sst/constructs";
 
 export default {
   config(_input) {
@@ -39,9 +39,12 @@ export default {
       // })
       const site = new NextjsSite(stack, "site", {
         buildCommand: 
-          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build --streaming",
-          // "pnpx open-next@0.0.0-tags-13.5-2 build",
+          "/mnt/ssd2/projects/open-next/packages/open-next/dist/index.js build",
+          // "pnpx open-next@2.2.1 build",
         // enableExperimentalCacheInterception: true,
+        experimental: {
+          streaming: false,
+        },
         waitForInvalidation: false,
         environment: {
           AWS_LAMBDA_RUNTIME_VERBOSE:"3"

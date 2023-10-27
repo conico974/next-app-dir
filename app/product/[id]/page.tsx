@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 async function getProductData(id: number) {
   faker.seed(id);
   const response = await fetch(
-    'https://d2jjvnhym149vv.cloudfront.net/api/test',
+    'https://d2uze3ojgmz8re.cloudfront.net/api/test',
     {
       next: { tags: ['test'] },
     }

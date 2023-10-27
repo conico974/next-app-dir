@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: false,
   experimental: {
     // appDocumentPreloading: false,
     esmExternals: true,
@@ -42,7 +43,7 @@ const nextConfig = {
       },
       {
         source: "/externalRewriteLocal",
-        destination: "https://www.github.com",
+        destination: "https://d3ftyhzhpsmdwh.cloudfront.net",
       },
     ],
     afterFiles: [
@@ -50,6 +51,10 @@ const nextConfig = {
         source: "/shouldBeRewrittenAfterFiles",
         destination: "/",
       },
+      {
+        source: "/shouldBeRewrittenWithPath/:path",
+        destination: "https://www.github.com/:path",
+      }
     ],
     fallback: [
       {

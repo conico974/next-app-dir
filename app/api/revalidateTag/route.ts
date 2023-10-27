@@ -12,7 +12,7 @@ async function invalidateCFPaths(paths: string[]) {
   return cloudFront.send(
     new CreateInvalidationCommand({
       // Set CloudFront distribution ID here
-      DistributionId: "EMABR25LK5OGG",
+      DistributionId: "EINTH9TBVV4PI",
       InvalidationBatch: {
         CallerReference: `${Date.now()}`,
         Paths: {

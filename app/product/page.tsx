@@ -24,7 +24,7 @@ const Product = async () => {
       {[1, 2, 3, 4, 5, 6].map((id) => {
         const { image, name, price } = getProductData(id);
         return (
-          <Link key={id} href={`product/${id}`}>
+          <Link key={id} href={`/product/${id}`}>
             <article>
               <Image src={image} alt={name} width={640} height={480} />
               <hgroup>
