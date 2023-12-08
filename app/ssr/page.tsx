@@ -2,6 +2,8 @@ import React, { Suspense } from 'react';
 import { headers } from 'next/headers';
 import MotionLayout from './component';
 
+// export const runtime = "edge";
+
 async function getTime() {
   const res = await new Promise<string>((resolve) => {
     setTimeout(() => {

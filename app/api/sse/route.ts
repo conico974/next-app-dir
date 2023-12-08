@@ -24,27 +24,27 @@ export async function GET(request: NextRequest) {
           data: Array(1000).fill(0).map((_, i) => ({id: i, name: `name1-${i}`})),
         })}\n\n`,
       )
-      await wait(1);
+      await wait(1000);
       writer.write(
         `data: ${JSON.stringify({
           message: "open",
           time: new Date().toISOString(),
-          data: Array(1000).fill(0).map((_, i) => ({id: i, name: `name2-${i}`})),
+          data: Array(10).fill(0).map((_, i) => ({id: i, name: `name2-${i}`})),
         })}\n\n`,
       )
-      await wait(1);
+      await wait(1000);
       writer.write(
         `data: ${JSON.stringify({
           message: "open",
           time: new Date().toISOString(),
-          data: Array(1000).fill(0).map((_, i) => ({id: i, name: `name3-${i}`})),
+          data: Array(10).fill(0).map((_, i) => ({id: i, name: `name3-${i}`})),
         })}\n\n`,
       )
       writer.write(
         `data: ${JSON.stringify({
           message: "open",
           time: new Date().toISOString(),
-          data: Array(1000).fill(0).map((_, i) => ({id: i, name: `name4-${i}`})),
+          data: Array(10).fill(0).map((_, i) => ({id: i, name: `name4-${i}`})),
         })}\n\n`,
       )
       writer.write(
@@ -58,10 +58,10 @@ export async function GET(request: NextRequest) {
         `data: ${JSON.stringify({
           message: "open",
           time: new Date().toISOString(),
-          data: Array(1000).fill(0).map((_, i) => ({id: i, name: `name6-${i}`})),
+          data: Array(10).fill(0).map((_, i) => ({id: i, name: `name6-${i}`})),
         })}\n\n`,
       )
-      await wait(5);
+      await wait(500);
       await writer.close();
   
     })

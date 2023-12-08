@@ -1,9 +1,21 @@
+const million = require('million/compiler');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: false,
+  output: 'standalone',
   experimental: {
-    // appDocumentPreloading: false,
+    appDocumentPreloading: false,
     esmExternals: true,
+    outputFileTracingExcludes: {
+      "*": [
+        "@swc/core",
+        'esbuild',
+        'uglify-js',
+        'watchpack',
+        'webassemblyjs',
+        'sharp'
+      ]
+    }
   },
   images: {
     remotePatterns: [{ protocol: "https", hostname: "loremflickr.com" }],
@@ -45,6 +57,10 @@ const nextConfig = {
         source: "/externalRewriteLocal",
         destination: "https://d3ftyhzhpsmdwh.cloudfront.net",
       },
+      {
+        source: "/externalRewriteSsr",
+        destination: "https://vdfyg7as4gotycai26sfhz2zme0dhyha.lambda-url.eu-west-1.on.aws/ssr"
+      }
     ],
     afterFiles: [
       {
@@ -94,4 +110,6 @@ const nextConfig = {
   ],
 };
 
-module.exports = nextConfig;
+module.exports = million.next(
+  nextConfig, { auto: { rsc: true } }
+);
