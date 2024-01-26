@@ -4,15 +4,20 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   // console.log('middleware', request);
   // console.log('next url', request.nextUrl);
+  if (request.nextUrl.pathname.startsWith('/monitoring')) {
+    const orgId = request.nextUrl.searchParams.get('o');
+    const projectId = request.nextUrl.searchParams.get('p');
+    return NextResponse.rewrite(new URL(`https://o${orgId}.ingest.sentry.io/api/${projectId}/envelope/?hsts=0`));
+  }
 
-  if(request.nextUrl.pathname.startsWith('/middlewareRewritesExternal2')) {
+  if (request.nextUrl.pathname.startsWith('/middlewareRewritesExternal2')) {
     return NextResponse.rewrite(new URL('https://d3ftyhzhpsmdwh.cloudfront.net/'));
   }
 
-  if(request.nextUrl.pathname.startsWith('/middlewareRewritesExternal')) {
+  if (request.nextUrl.pathname.startsWith('/middlewareRewritesExternal')) {
     return NextResponse.rewrite(new URL('https://rpwktd3vxykgihuemkfxfqhxue0wrrah.lambda-url.eu-west-1.on.aws/'));
   }
-  
+
   if (request.nextUrl.pathname.startsWith('/middlewareRewrite')) {
     // console.log('middlewareRewrite');
     return NextResponse.rewrite(new URL('/', request.url));
@@ -35,7 +40,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next({
       headers: {
         'Cache-Control': 's-maxage=99, stale-while-revalidate=999',
-      
+
       }
     })
   }

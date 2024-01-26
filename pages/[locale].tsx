@@ -8,18 +8,18 @@ export const getServerSideProps = async (
   return {
     props: {
       date: new Date().toISOString(),
-      id: context.params?.id as string,
+      locale: context.params?.id as string,
     },
   };
 };
 
 const SSRDynamicRoutes = ({
   date,
-  id,
+  locale,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <Flex direction={"column"}>
-      <Heading>{`SSR Dynamic Routes : ${id}`}</Heading>
+      <Heading>{`SSR Dynamic Routes : ${locale}`}</Heading>
       <Text>{`Last generated at : ${date}`}</Text>
     </Flex>
   );

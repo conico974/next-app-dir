@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "deploy": "LOCAL_GENERATE=true OPEN_NEXT_DEBUG=true sst deploy --stage prod",
+    "deploy:reference": "LOCAL_GENERATE=true OPEN_NEXT_DEBUG=true npx open-next@3.0.0-rc.2 build && sst deploy --stage reference",
     "deploy:prod": "LOCAL_GENERATE=true sst deploy --stage prod",
     "build": "LOCAL_GENERATE=true next build",
     "start": "next start",
@@ -20,6 +21,7 @@
     "@emotion/styled": "^11.10.6",
     "@faker-js/faker": "^7.6.0",
     "@picocss/pico": "^1.5.7",
+    "@sentry/nextjs": "^7.86.0",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
@@ -30,7 +32,7 @@
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.10.0",
     "million": "^2.6.4",
-    "next": "14.0.3",
+    "next": "14.0.5-canary.13",
     "open-next": "file:///mnt/ssd2/projects/open-next/packages/open-next",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -41,7 +43,9 @@
     "webpack-sources": "^3.2.3"
   },
   "devDependencies": {
+    "@aws-cdk/aws-apprunner-alpha": "2.110.1-alpha.0",
     "@aws-sdk/client-dynamodb": "^3.360.0",
+    "@biomejs/biome": "1.4.1",
     "@vercel/nft": "^0.24.3",
     "aws-cdk-lib": "2.110.1",
     "constructs": "10.3.0",
