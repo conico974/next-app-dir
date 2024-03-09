@@ -1,6 +1,7 @@
 import React from 'react';
 import { faker } from '@faker-js/faker';
 import Image from 'next/image';
+import { notFound, redirect } from 'next/navigation';
 
 export const revalidate = 300; // 5 minutes
 
@@ -33,6 +34,12 @@ const Product = async ({ params: { id } }: { params: { id: string } }) => {
   const { image, name, price, description, lastUpdate } = await getProductData(
     parseInt(id)
   );
+  if(id=== "not-found") {
+    notFound()
+  }
+  if(id === "redirect") {
+    redirect("/product/1")
+  }
   return (
     <div>
       <div className="grid">

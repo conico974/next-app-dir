@@ -12,24 +12,6 @@ const config = {
 	},
 	// functions: {},
 	functions: {
-		ssr: {
-			routes: [
-				"app/api/isr/route",
-				"app/api/sse/route",
-				"app/api/revalidateTag/route",
-			],
-			patterns: ["api/isr", "api/revalidateTag", "api/sse"],
-			override: {
-				wrapper: "aws-lambda-streaming",
-			},
-			experimentalBundledNextServer: true,
-		},
-		pageSsr: {
-			routes: ["pages/pageSsr"],
-			patterns: ["pageSsr", "_next/data/BUILD_ID/pageSsr.json"],
-			experimentalBundledNextServer: true,
-			override: {},
-		},
 		edge: {
 			runtime: "edge",
 			// experimentalBundledNextServer: true,
